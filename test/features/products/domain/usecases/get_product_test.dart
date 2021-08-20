@@ -8,7 +8,6 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../../fixtures/fixture_reader.dart';
 import 'products_repository.mocks.dart';
 
 // class MockProductsRepository extends Mock implements ProductsRepository {}
