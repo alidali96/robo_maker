@@ -14,6 +14,14 @@ import 'product.dart';
 //   factory Products.fromJson(Map<String, dynamic> json) =>
 //       _$ProductsFromJson(json);
 // }
+class PP extends Equatable {
+  final String test;
+  PP({
+    required this.test,
+  });
+  @override
+  List<Object?> get props => [test];
+}
 
 class Products extends Equatable {
   final List<Product> list;
