@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:clementoni/features/products/data/models/product_model.dart';
-import 'package:clementoni/features/products/data/models/productes_model.dart';
+import 'package:clementoni/features/products/data/models/products_model.dart';
 import 'package:clementoni/features/products/domain/entities/product.dart';
 import 'package:clementoni/features/products/domain/entities/products.dart';
 import 'package:flutter_test/flutter_test.dart';
