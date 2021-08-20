@@ -18,8 +18,6 @@
 //       _$ProductFromJson(json);
 // }
 
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {
@@ -50,52 +48,4 @@ class Product extends Equatable {
       details,
     ];
   }
-
-  Product copyWith({
-    int? id,
-    String? name,
-    String? category,
-    int? age,
-    double? price,
-    List<String>? details,
-  }) {
-    return Product(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      category: category ?? this.category,
-      age: age ?? this.age,
-      price: price ?? this.price,
-      details: details ?? this.details,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'category': category,
-      'age': age,
-      'price': price,
-      'details': details,
-    };
-  }
-
-  factory Product.fromMap(Map<String, dynamic> map) {
-    return Product(
-      id: map['id'],
-      name: map['name'],
-      category: map['category'],
-      age: map['age'],
-      price: map['price'],
-      details: List<String>.from(map['details']),
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory Product.fromJson(String source) =>
-      Product.fromMap(json.decode(source));
-
-  @override
-  bool get stringify => true;
 }

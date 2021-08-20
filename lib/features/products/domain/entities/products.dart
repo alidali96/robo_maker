@@ -24,32 +24,4 @@ class Products extends Equatable {
 
   @override
   List<Object> get props => [list];
-
-  Products copyWith({
-    List<Product>? list,
-  }) {
-    return Products(
-      list: list ?? this.list,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'list': list.map((x) => x.toMap()).toList(),
-    };
-  }
-
-  factory Products.fromMap(Map<String, dynamic> map) {
-    return Products(
-      list: List<Product>.from(map['list']?.map((x) => Product.fromMap(x))),
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory Products.fromJson(String source) =>
-      Products.fromMap(json.decode(source));
-
-  @override
-  bool get stringify => true;
 }
