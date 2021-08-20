@@ -1,3 +1,5 @@
+import 'package:clementoni/features/products/domain/entities/product.dart';
+import 'package:clementoni/features/products/domain/entities/products.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,6 +10,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    const product = Product(
+      id: 1,
+      name: 'A',
+      category: 'B',
+      age: 12,
+      price: 12.2,
+      details: ['details'],
+    );
+    print(product);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
