@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.robo_maker">
+    package="com.example.clementoni">
    <application
-        android:label="robo_maker"
+        android:label="Clementoni"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
