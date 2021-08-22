@@ -2,7 +2,6 @@ import 'package:clementoni/core/presentation/pages/error_page.dart';
 import 'package:clementoni/core/presentation/widgets/loading_indicator.dart';
 import 'package:clementoni/features/products/domain/entities/products.dart';
 import 'package:clementoni/features/products/presentation/bloc/products/products_bloc.dart';
-import 'package:clementoni/features/products/presentation/pages/product_page.dart';
 import 'package:clementoni/features/products/presentation/widgets/product_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +18,7 @@ class ProductsPage extends StatelessWidget {
         children: [
           BlocBuilder<ProductsBloc, ProductsState>(
             builder: (context, state) {
+              print(state);
               if (state is ProductsInitial) {
                 _loadProducts(context);
               } else if (state is ProductsLoading) {
