@@ -22,6 +22,8 @@ void main() {
       Product(
         id: 1,
         name: 'A',
+        image:
+            "https://www.clementoni.com/media/prod/be/66926/robomaker-start_lGqT6Ka.jpg",
         category: 'B',
         age: 2,
         price: 1.0,

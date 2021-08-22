@@ -13,6 +13,8 @@ void main() {
     ProductModel(
       id: 59122,
       name: "RoboMaker Starter",
+      image:
+          "https://www.clementoni.com/media/prod/be/66926/robomaker-start_lGqT6Ka.jpg",
       category: "Robot",
       age: 8,
       price: 45.95,
@@ -26,6 +28,8 @@ void main() {
     ProductModel(
       id: 59078,
       name: "RoboMaker PRO",
+      image:
+          "https://www.clementoni.com/media/prod/es/55239/robomaker_gq3V0Pc.jpg",
       category: "Robot",
       age: 10,
       price: 75.95,

@@ -18,7 +18,6 @@ class ProductsPage extends StatelessWidget {
         children: [
           BlocBuilder<ProductsBloc, ProductsState>(
             builder: (context, state) {
-              print(state);
               if (state is ProductsInitial) {
                 _loadProducts(context);
               } else if (state is ProductsLoading) {

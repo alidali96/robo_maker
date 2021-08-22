@@ -2,7 +2,6 @@ import 'package:clementoni/core/presentation/widgets/app_bar.dart';
 import 'package:clementoni/features/cart/presentation/pages/cart_page.dart';
 import 'package:clementoni/features/products/presentation/pages/products_page.dart';
 import 'package:clementoni/features/profile/presentation/pages/cart_page.dart';
-import 'package:clementoni/main.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {

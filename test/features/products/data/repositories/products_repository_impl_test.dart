@@ -33,6 +33,8 @@ void main() {
   final tProductModel = ProductModel(
     id: tProductId,
     name: "RoboMaker Starter",
+    image:
+        "https://www.clementoni.com/media/prod/be/66926/robomaker-start_lGqT6Ka.jpg",
     category: "Robot",
     age: 8,
     price: 45.95,

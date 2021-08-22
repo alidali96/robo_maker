@@ -25,7 +25,8 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
   @override
   Future<ProductModel> getProduct(int id) async {
     try {
-      final response = await dio.get('$apiURL/products/$id', options: options);
+      final response =
+          await dio.get('$apiURL/products?id=$id', options: options);
       if (response.statusCode == 200) {
         return ProductModel.fromJson(response.data);
       } else {

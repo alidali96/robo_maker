@@ -26,7 +26,7 @@ class ProductTile extends StatelessWidget {
                   children: [
                     Text(
                       product.name,
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.headline5,
                     ),
                     SizedBox(height: 10.0),
                     Row(
@@ -43,6 +43,36 @@ class ProductTile extends StatelessWidget {
                           ),
                           child: Text(
                             product.category,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 10.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '€${product.price}',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0,
+                            vertical: 8.0,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).accentColor,
+                            borderRadius: BorderRadius.circular(25.0),
+                          ),
+                          child: Text(
+                            '${product.age}+ Jahre',
                             style: TextStyle(
                               color: Colors.white,
                             ),

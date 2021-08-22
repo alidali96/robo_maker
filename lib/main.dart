@@ -21,6 +21,11 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xFF0048BA),
         accentColor: Color(0xFF2CA3B3),
         errorColor: Color(0xFFE8372D),
+        textTheme: TextTheme(
+          headline4: TextStyle(
+            color: Color(0xFF0048BA),
+          ),
+        ),
       ),
       home: MainPage(),
       routes: {},

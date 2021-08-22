@@ -24,7 +24,7 @@ void main() {
   final tProductId = tProductModel.id;
 
   final apiURLProducts = '$kBaseAPI/products';
-  final apiURLProduct = '$kBaseAPI/products/$tProductId';
+  final apiURLProduct = '$kBaseAPI/products?id=$tProductId';
 
   final productsResponseSuccess = Response(
     requestOptions: RequestOptions(

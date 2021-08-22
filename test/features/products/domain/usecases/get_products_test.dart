@@ -21,6 +21,8 @@ void main() {
     id: tProductId,
     age: 4,
     name: 'Robo',
+    image:
+        "https://www.clementoni.com/media/prod/be/66926/robomaker-start_lGqT6Ka.jpg",
     price: 1.5,
     category: 'Robot',
     details: [],
