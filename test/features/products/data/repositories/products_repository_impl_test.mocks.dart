@@ -65,8 +65,17 @@ class MockProductsLocalDataSource extends _i1.Mock
           returnValue: Future<_i2.ProductsModel>.value(_FakeProductsModel_0()))
       as _i5.Future<_i2.ProductsModel>);
   @override
+  _i5.Future<_i3.ProductModel> getLocalProduct(int? id) => (super.noSuchMethod(
+          Invocation.method(#getLocalProduct, [id]),
+          returnValue: Future<_i3.ProductModel>.value(_FakeProductModel_1()))
+      as _i5.Future<_i3.ProductModel>);
+  @override
   _i5.Future<bool> saveProductsLocally(_i2.ProductsModel? products) =>
       (super.noSuchMethod(Invocation.method(#saveProductsLocally, [products]),
+          returnValue: Future<bool>.value(false)) as _i5.Future<bool>);
+  @override
+  _i5.Future<bool> saveProductLocally(_i3.ProductModel? product) =>
+      (super.noSuchMethod(Invocation.method(#saveProductLocally, [product]),
           returnValue: Future<bool>.value(false)) as _i5.Future<bool>);
   @override
   String toString() => super.toString();

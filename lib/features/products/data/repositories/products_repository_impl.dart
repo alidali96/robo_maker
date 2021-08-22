@@ -41,8 +41,22 @@ class ProductsRepositoryImpl extends ProductsRepository {
   }
 
   @override
-  Future<Either<Failure, Product>> getProduct(int id) {
-    // TODO: implement getProduct
-    throw UnimplementedError();
+  Future<Either<Failure, Product>> getProduct(int id) async {
+    if (await internetConnection.isConnected) {
+      try {
+        final productModel = await remoteDataSource.getProduct(id);
+        localDataSource.saveProductLocally(productModel);
+        return Right(productModel);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      try {
+        final productModel = await localDataSource.getLocalProduct(id);
+        return Right(productModel);
+      } on LocalException {
+        return Left(LocalFailure());
+      }
+    }
   }
 }
