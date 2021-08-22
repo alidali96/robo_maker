@@ -22,13 +22,17 @@ class ProductsRepositoryImpl extends ProductsRepository {
 
   @override
   Future<Either<Failure, Products>> getProducts() async {
-    internetConnection.isConnected;
-    try {
-      final productsModel = await remoteDataSource.getProducts();
-      localDataSource.saveProductsLocally(productsModel);
+    if (await internetConnection.isConnected) {
+      try {
+        final productsModel = await remoteDataSource.getProducts();
+        localDataSource.saveProductsLocally(productsModel);
+        return Right(productsModel);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      final productsModel = await localDataSource.getLocalProducts();
       return Right(productsModel);
-    } on ServerException {
-      return Left(ServerFailure());
     }
   }
 

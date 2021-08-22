@@ -110,10 +110,21 @@ void main() {
   );
 
   group(
-    'device is offlie',
+    'device is offline',
     () {
       setUp(() {
         when(mockInternetConnection.isConnected).thenAnswer((_) async => false);
+      });
+
+      test('should return saved products when there\'s saved data', () async {
+        // arrange
+        when(mockProductsLocalDataSource.getLocalProducts())
+            .thenAnswer((_) async => tProductsModel);
+        // act
+        final products = await repositoryImpl.getProducts();
+        // assert
+        verify(mockProductsLocalDataSource.getLocalProducts());
+        expect(products, equals(Right(tProductsModel)));
       });
     },
   );
