@@ -1,12 +1,12 @@
-import 'package:clementoni/core/presentation/pages/error_page.dart';
-import 'package:clementoni/core/presentation/widgets/loading_indicator.dart';
-import 'package:clementoni/features/products/presentation/bloc/product/product_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/presentation/pages/error_page.dart';
 import '../../../../core/presentation/widgets/app_bar.dart';
+import '../../../../core/presentation/widgets/loading_indicator.dart';
 import '../../../../injection_container.dart';
 import '../../domain/entities/product.dart';
+import '../bloc/product/product_bloc.dart';
 
 class ProductPage extends StatelessWidget {
   static const route = '/product';

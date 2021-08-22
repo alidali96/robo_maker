@@ -1,8 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:clementoni/core/error/exceptions.dart';
-import 'package:clementoni/features/products/data/models/product_model.dart';
-import 'package:clementoni/features/products/data/models/products_model.dart';
+import '../../../../core/error/exceptions.dart';
+import '../models/product_model.dart';
+import '../models/products_model.dart';
 
 abstract class ProductsLocalDataSource {
   Future<ProductsModel> getLocalProducts();

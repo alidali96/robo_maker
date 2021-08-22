@@ -1,6 +1,7 @@
-import 'package:clementoni/features/products/domain/entities/product.dart';
-import 'package:clementoni/features/products/presentation/pages/product_page.dart';
 import 'package:flutter/material.dart';
+
+import '../../domain/entities/product.dart';
+import '../pages/product_page.dart';
 
 class ProductTile extends StatelessWidget {
   final Product product;

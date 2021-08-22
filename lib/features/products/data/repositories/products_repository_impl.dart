@@ -1,6 +1,6 @@
-import 'package:clementoni/core/error/exceptions.dart';
 import 'package:dartz/dartz.dart';
 
+import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/network/internet_connection.dart';
 import '../../domain/entities/product.dart';

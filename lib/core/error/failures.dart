@@ -16,6 +16,8 @@ class ServerFailure extends Failure {
 }
 
 class LocalFailure extends Failure {
-  LocalFailure({String message = 'Something went wrong locally :('})
+  LocalFailure(
+      {String message =
+          'Something went wrong locally (check your internet connection) :('})
       : super(message);
 }

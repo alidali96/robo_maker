@@ -1,8 +1,11 @@
 import 'dart:async';
+
 import 'package:bloc/bloc.dart';
-import 'package:clementoni/features/products/domain/entities/product.dart';
-import 'package:clementoni/features/products/domain/usecases/get_product.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../domain/entities/product.dart';
+import '../../../domain/usecases/get_product.dart';
+
 part 'product_event.dart';
 part 'product_state.dart';
 

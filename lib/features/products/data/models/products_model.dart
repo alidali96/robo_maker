@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:clementoni/features/products/data/models/product_model.dart';
-import 'package:clementoni/features/products/domain/entities/products.dart';
+import '../../domain/entities/products.dart';
+import 'product_model.dart';
 
 class ProductsModel extends Products {
   final List<ProductModel> list;

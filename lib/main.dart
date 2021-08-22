@@ -1,9 +1,10 @@
-import 'package:clementoni/constants.dart';
-import 'package:clementoni/core/presentation/pages/error_page.dart';
-import 'package:clementoni/core/presentation/pages/main_page.dart';
-import 'package:clementoni/features/products/presentation/pages/product_page.dart';
 import 'package:flutter/material.dart';
+
+import 'constants.dart';
+import 'core/presentation/pages/error_page.dart';
+import 'core/presentation/pages/main_page.dart';
 import 'features/products/domain/entities/product.dart';
+import 'features/products/presentation/pages/product_page.dart';
 import 'injection_container.dart' as app;
 
 void main() async {
@@ -27,8 +28,10 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: MainPage(),
-      routes: {},
+      initialRoute: MainPage.route,
+      routes: {
+        MainPage.route: (_) => MainPage(),
+      },
       onGenerateRoute: (settings) {
         return MaterialPageRoute(builder: (_) {
           switch (settings.name) {
