@@ -1,9 +1,7 @@
 import 'package:clementoni/core/error/exceptions.dart';
-import 'package:clementoni/core/error/failures.dart';
 import 'package:clementoni/features/products/data/datasources/products_local_data_source.dart';
 import 'package:clementoni/features/products/data/models/product_model.dart';
 import 'package:clementoni/features/products/data/models/products_model.dart';
-import 'package:dartz/dartz.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
