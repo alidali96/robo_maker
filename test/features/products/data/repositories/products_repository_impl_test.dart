@@ -1,3 +1,5 @@
+import 'package:clementoni/core/error/exceptions.dart';
+import 'package:clementoni/core/error/failures.dart';
 import 'package:clementoni/core/network/internet_connection.dart';
 import 'package:clementoni/features/products/data/datasources/products_local_data_source.dart';
 import 'package:clementoni/features/products/data/datasources/products_remote_data_source.dart';
@@ -5,7 +7,6 @@ import 'package:clementoni/features/products/data/models/product_model.dart';
 import 'package:clementoni/features/products/data/models/products_model.dart';
 import 'package:clementoni/features/products/data/repositories/products_repository_impl.dart';
 import 'package:clementoni/features/products/domain/entities/product.dart';
-import 'package:clementoni/features/products/domain/entities/products.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -56,8 +57,13 @@ void main() {
     ],
   );
 
-  final tProducts = Products(list: [tProduct]);
+  // final tProducts = Products(list: [tProduct]);
   final tProductsModel = ProductsModel(list: [tProductModel]);
+
+  setUp(() {
+    when(mockProductsLocalDataSource.saveProductsLocally(any))
+        .thenAnswer((_) async => true);
+  });
 
   test('should check for internet connection', () async {
     // arrange
@@ -78,7 +84,7 @@ void main() {
         when(mockInternetConnection.isConnected).thenAnswer((_) async => true);
       });
 
-      test('should return remote data', () async {
+      test('should return remote data when the call success', () async {
         // arrange
         when(mockProductsRemoteDataSource.getProducts())
             .thenAnswer((_) async => tProductsModel);
@@ -86,7 +92,19 @@ void main() {
         final products = await repositoryImpl.getProducts();
         // assert
         verify(mockProductsRemoteDataSource.getProducts());
+        verify(mockProductsLocalDataSource.saveProductsLocally(tProductsModel));
         expect(products, equals(Right(tProductsModel)));
+      });
+
+      test('should return ServerFailure when the call fails', () async {
+        // arrange
+        when(mockProductsRemoteDataSource.getProducts())
+            .thenThrow(ServerException());
+        // act
+        final result = await repositoryImpl.getProducts();
+        // assert
+        verify(mockProductsRemoteDataSource.getProducts());
+        expect(result, equals(Left(ServerFailure())));
       });
     },
   );

@@ -1,3 +1,4 @@
+import 'package:clementoni/core/error/exceptions.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
@@ -22,7 +23,13 @@ class ProductsRepositoryImpl extends ProductsRepository {
   @override
   Future<Either<Failure, Products>> getProducts() async {
     internetConnection.isConnected;
-    return Right(await remoteDataSource.getProducts());
+    try {
+      final productsModel = await remoteDataSource.getProducts();
+      localDataSource.saveProductsLocally(productsModel);
+      return Right(productsModel);
+    } on ServerException {
+      return Left(ServerFailure());
+    }
   }
 
   @override
