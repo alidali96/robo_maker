@@ -126,6 +126,16 @@ void main() {
         verify(mockProductsLocalDataSource.getLocalProducts());
         expect(products, equals(Right(tProductsModel)));
       });
+      test('should return LocalFailure when there\'s NO saved data', () async {
+        // arrange
+        when(mockProductsLocalDataSource.getLocalProducts())
+            .thenThrow(LocalException());
+        // act
+        final result = await repositoryImpl.getProducts();
+        // assert
+        verify(mockProductsLocalDataSource.getLocalProducts());
+        expect(result, equals(Left(LocalFailure())));
+      });
     },
   );
 }

@@ -31,8 +31,12 @@ class ProductsRepositoryImpl extends ProductsRepository {
         return Left(ServerFailure());
       }
     } else {
-      final productsModel = await localDataSource.getLocalProducts();
-      return Right(productsModel);
+      try {
+        final productsModel = await localDataSource.getLocalProducts();
+        return Right(productsModel);
+      } on LocalException {
+        return Left(LocalFailure());
+      }
     }
   }
 
