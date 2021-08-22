@@ -1,0 +1,1 @@
+final kAppName = 'Clementoni';

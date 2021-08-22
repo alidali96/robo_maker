@@ -1,3 +1,5 @@
+import 'package:clementoni/constants.dart';
+import 'package:clementoni/core/presentation/pages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'injection_container.dart' as app;
 
@@ -8,19 +10,14 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: kAppName,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        body: Center(
-          child: Text('Products'),
-        ),
-      ),
+      home: MainPage(),
     );
   }
 }
