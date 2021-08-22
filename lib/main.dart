@@ -1,6 +1,9 @@
 import 'package:clementoni/constants.dart';
+import 'package:clementoni/core/presentation/pages/error_page.dart';
 import 'package:clementoni/core/presentation/pages/main_page.dart';
+import 'package:clementoni/features/products/presentation/pages/product_page.dart';
 import 'package:flutter/material.dart';
+import 'features/products/domain/entities/product.dart';
 import 'injection_container.dart' as app;
 
 void main() async {
@@ -15,9 +18,28 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: kAppName,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color(0xFF0048BA),
+        accentColor: Color(0xFF2CA3B3),
+        errorColor: Color(0xFFE8372D),
       ),
       home: MainPage(),
+      routes: {},
+      onGenerateRoute: (settings) {
+        return MaterialPageRoute(builder: (_) {
+          switch (settings.name) {
+            case ProductPage.route:
+              if (settings.arguments is Product) {
+                final prodcut = settings.arguments as Product;
+                return ProductPage(product: prodcut);
+              } else {
+                return ErrorPage();
+              }
+
+            default:
+              return ErrorPage();
+          }
+        });
+      },
     );
   }
 }

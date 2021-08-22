@@ -1,3 +1,4 @@
+import 'package:clementoni/constants.dart';
 import 'package:clementoni/core/error/exceptions.dart';
 import 'package:clementoni/features/products/data/datasources/products_remote_data_source.dart';
 import 'package:clementoni/features/products/data/models/product_model.dart';
@@ -22,8 +23,8 @@ void main() {
   final tProductsModel = ProductsModel.fromJson(tProductsJson);
   final tProductId = tProductModel.id;
 
-  final apiURLProducts = 'https://alidali.ca/products';
-  final apiURLProduct = 'https://alidali.ca/products/$tProductId';
+  final apiURLProducts = '$kBaseAPI/products';
+  final apiURLProduct = '$kBaseAPI/products/$tProductId';
 
   final productsResponseSuccess = Response(
     requestOptions: RequestOptions(

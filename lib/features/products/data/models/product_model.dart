@@ -6,6 +6,7 @@ class ProductModel extends Product {
   ProductModel({
     required int id,
     required String name,
+    required String image,
     required String category,
     required int age,
     required double price,
@@ -13,6 +14,7 @@ class ProductModel extends Product {
   }) : super(
             id: id,
             name: name,
+            image: image,
             category: category,
             age: age,
             price: price,
@@ -22,6 +24,7 @@ class ProductModel extends Product {
     return {
       'id': id,
       'name': name,
+      'image': image,
       'category': category,
       'age': age,
       'price': price,
@@ -33,6 +36,7 @@ class ProductModel extends Product {
     return ProductModel(
       id: map['id'],
       name: map['name'],
+      image: map['image'],
       category: map['category'],
       age: map['age'],
       price: map['price'],

@@ -14,9 +14,12 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(),
-      body: PageView(
-        controller: _pageController,
-        children: _pages,
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: PageView(
+          controller: _pageController,
+          children: _pages,
+        ),
       ),
     );
   }

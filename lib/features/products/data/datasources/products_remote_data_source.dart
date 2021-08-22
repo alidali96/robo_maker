@@ -1,6 +1,9 @@
-import 'package:clementoni/core/error/exceptions.dart';
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
+import '../../../../constants.dart';
+import '../../../../core/error/exceptions.dart';
 import '../models/product_model.dart';
 import '../models/products_model.dart';
 
@@ -11,7 +14,7 @@ abstract class ProductsRemoteDataSource {
 
 class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
   final Dio dio;
-  final apiURL = 'https://alidali.ca';
+  final apiURL = kBaseAPI;
   final options = Options(
     headers: {
       Headers.contentTypeHeader: 'application/json',
