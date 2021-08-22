@@ -36,7 +36,7 @@ class ProductModel extends Product {
       category: map['category'],
       age: map['age'],
       price: map['price'],
-      details: List<String>.from(map['details']),
+      details: map['details'] != null ? List<String>.from(map['details']) : [],
     );
   }
 

@@ -1,3 +1,4 @@
+import 'package:clementoni/core/error/exceptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:clementoni/features/products/data/models/product_model.dart';
@@ -19,24 +20,32 @@ class ProductsLocalDataSourceImpl implements ProductsLocalDataSource {
   static const PRODUCT_KEY = 'PRODUCT-';
   static const PRODUCTS_KEY = 'PRODUCTS';
 
-  String productKey(ProductModel productModel) =>
-      PRODUCT_KEY + productModel.id.toString();
+  String productKey(int id) => PRODUCT_KEY + id.toString();
 
   @override
   Future<ProductModel> getLocalProduct(int id) async {
-    // TODO: implement getLocalProduct
-    throw UnimplementedError();
+    try {
+      final json = sharedPreferences.getString(productKey(id));
+      return Future.value(ProductModel.fromJson(json));
+    } catch (error) {
+      throw LocalException();
+    }
   }
 
   @override
   Future<ProductsModel> getLocalProducts() async {
-    // TODO: implement getLocalProducts
-    throw UnimplementedError();
+    try {
+      final json = sharedPreferences.getString(PRODUCTS_KEY);
+      return Future.value(ProductsModel.fromJson(json));
+    } catch (error) {
+      throw LocalException();
+    }
   }
 
   @override
   Future<bool> saveProductLocally(ProductModel product) async {
-    return sharedPreferences.setString(productKey(product), product.toJson());
+    return sharedPreferences.setString(
+        productKey(product.id), product.toJson());
   }
 
   @override

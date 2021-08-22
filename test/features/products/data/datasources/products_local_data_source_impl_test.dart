@@ -1,3 +1,5 @@
+import 'package:clementoni/core/error/exceptions.dart';
+import 'package:clementoni/core/error/failures.dart';
 import 'package:clementoni/features/products/data/datasources/products_local_data_source.dart';
 import 'package:clementoni/features/products/data/models/product_model.dart';
 import 'package:clementoni/features/products/data/models/products_model.dart';
@@ -36,14 +38,14 @@ void main() {
   group('saving data locally', () {
     test('save product locally', () async {
       when(mockSharedPreferences.setString(
-              productsLocalDataSourceImpl.productKey(tProductModel), any))
+              productsLocalDataSourceImpl.productKey(tProductModel.id), any))
           .thenAnswer((_) async => true);
 
       final saved =
           await productsLocalDataSourceImpl.saveProductLocally(tProductModel);
 
       verify(mockSharedPreferences.setString(
-          productsLocalDataSourceImpl.productKey(tProductModel), any));
+          productsLocalDataSourceImpl.productKey(tProductModel.id), any));
       expect(saved, true);
     });
 
@@ -58,6 +60,56 @@ void main() {
       verify(mockSharedPreferences.setString(
           ProductsLocalDataSourceImpl.PRODUCTS_KEY, any));
       expect(saved, true);
+    });
+  });
+
+  group('retrieving saved data', () {
+    test('return saved product locally', () async {
+      when(mockSharedPreferences
+              .getString(productsLocalDataSourceImpl.productKey(tProductId)))
+          .thenAnswer((_) => tProductModel.toJson());
+
+      final product =
+          await productsLocalDataSourceImpl.getLocalProduct(tProductId);
+
+      verify(mockSharedPreferences
+          .getString(productsLocalDataSourceImpl.productKey(tProductId)));
+      expect(product, tProductModel);
+    });
+
+    test('return saved products locally', () async {
+      when(mockSharedPreferences
+              .getString(ProductsLocalDataSourceImpl.PRODUCTS_KEY))
+          .thenAnswer((_) => tProductsModel.toJson());
+
+      final products = await productsLocalDataSourceImpl.getLocalProducts();
+
+      verify(mockSharedPreferences
+          .getString(ProductsLocalDataSourceImpl.PRODUCTS_KEY));
+      expect(products, tProductsModel);
+    });
+
+    test(
+        'throws LocalException when no product with specified id is saved locally',
+        () async {
+      when(mockSharedPreferences
+              .getString(productsLocalDataSourceImpl.productKey(tProductId)))
+          .thenThrow(LocalException());
+
+      final method =
+          () => productsLocalDataSourceImpl.getLocalProduct(tProductId);
+
+      expect(method, throwsA(TypeMatcher<LocalException>()));
+    });
+
+    test('throws LocalException when no products are saved locally', () async {
+      when(mockSharedPreferences
+              .getString(ProductsLocalDataSourceImpl.PRODUCTS_KEY))
+          .thenThrow(LocalException());
+
+      final method = () => productsLocalDataSourceImpl.getLocalProducts();
+
+      expect(method, throwsA(TypeMatcher<LocalException>()));
     });
   });
 }
